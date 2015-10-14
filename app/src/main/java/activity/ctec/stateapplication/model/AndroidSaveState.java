@@ -47,5 +47,5 @@ public class AndroidSaveState extends Application
         this.age = age;
     }
 
-    
+
 }
