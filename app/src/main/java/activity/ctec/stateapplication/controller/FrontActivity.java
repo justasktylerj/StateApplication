@@ -8,10 +8,9 @@ import android.widget.EditText;
 import android.widget.CheckBox;
 import android.view.View;
 import android.content.Intent;
-import ctec.savingstateapplication.model.AndroidSaveState;
-import ctec.savingstateapplication.controller;
+import activity.ctec.stateapplication.model.AndroidSaveState;
+import activity.ctec.stateapplication.controller.backPageActivity;
 import android.app.Activity;
-
 import activity.ctec.stateapplication.R;
 
 public class FrontActivity extends Activity
@@ -20,8 +19,8 @@ public class FrontActivity extends Activity
     private EditText nameText;
     private EditText ageText;
     private CheckBox tiredBox;
-
     private Application saveState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +37,18 @@ public class FrontActivity extends Activity
         setupListeners();
     }
 
+
+    private void grabInput()
+    {
+        String name = nameText.getText().toString();
+        int age = Integer.parseInt(ageText.getText().toString());
+        boolean isTired = tiredBox.isChecked();
+
+        saveState.setUserName(name);
+        saveState.setAge(age);
+        saveState.setIsTired(isTired);
+
+    }
     private void setupListeners()
     {
         sendToOtherScreenButton.setOnCLickListener(new View.OnCLickListener()
